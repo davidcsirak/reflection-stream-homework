@@ -12,14 +12,16 @@ public class Homework1 {
      * Prints the declared methods of java.lang.String sorted by name.
      */
     public void streamPipeline1() {
-        // TODO
+
+        Arrays.stream(String.class.getDeclaredMethods()).sorted(Comparator.comparing(s->s.getName())).forEach(System.out::println);
     }
 
     /**
      *  Prints all distinct names of the declared methods of java.lang.String sorted alphabetically.
      */
     public void streamPipeline2() {
-        // TODO
+
+        Arrays.stream(String.class.getDeclaredMethods()).map(s->s.getName()).sorted().distinct().forEach(System.out::println);
     }
 
     /**
@@ -70,8 +72,8 @@ public class Homework1 {
      * Returns summary statistics about the number of parameters for the declared methods of java.lang.String.
      */
     public IntSummaryStatistics streamPipeline9() {
-        // TODO
-        return null;
+
+        return Arrays.stream(String.class.getDeclaredMethods()).mapToInt(s->s.getParameterCount()).summaryStatistics();
     }
 
     /**
@@ -86,8 +88,8 @@ public class Homework1 {
      * Returns the declared method of java.lang.String with the most number of parameters.
      */
     public Method streamPipeline11() {
-        // TODO
-        return null;
+
+        return Arrays.stream(String.class.getDeclaredMethods()).max(Comparator.comparing(s->s.getParameterCount())).get();
     }
 
     /**
